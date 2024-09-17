@@ -41,7 +41,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+uint32_t asd = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -208,7 +208,9 @@ void EXTI15_10_IRQHandler(void)
   /* USER CODE END EXTI15_10_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(B1_Pin);
   /* USER CODE BEGIN EXTI15_10_IRQn 1 */
-
+  asd = asd + 10;
+  if (asd > 100){asd = 0;}
+  TIM2->CCR1 = asd;
   /* USER CODE END EXTI15_10_IRQn 1 */
 }
 
@@ -216,10 +218,7 @@ void EXTI15_10_IRQHandler(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
 	//HAL_GPIO_TogglePin(LED_PWM_GPIO_Port, LED_PWM_Pin);
-	TIM2->CCR1 = TIM2->CCR1 + 10;
-	if (TIM2->CCR1 > 100){
-		TIM2->CCR1 = 0;
-	}
+
 
 }
 /* USER CODE END 1 */
