@@ -206,7 +206,7 @@ void TIM3_IRQHandler(void)
   /* USER CODE BEGIN TIM3_IRQn 0 */
 
 	TIM2->CCR3 = TIM3->CCR2;
-	TIM3->CCR2 = 0;
+	TIM3->CNT = 0;
 
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);
